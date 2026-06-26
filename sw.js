@@ -6,7 +6,7 @@
 // This ensures the app always opens offline, while silently
 // fetching updates in the background when online.
 
-const CACHE_NAME = 'kasipos-v2';
+const CACHE_NAME = 'kasipos-v3';
 const APP_SHELL = [
   '/kasipos-app/',
   '/kasipos-app/manifest.json',
