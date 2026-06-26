@@ -6,12 +6,12 @@
 // This ensures the app always opens offline, while silently
 // fetching updates in the background when online.
 
-const CACHE_NAME = 'kasipos-v1';
+const CACHE_NAME = 'kasipos-v2';
 const APP_SHELL = [
-  '/kasi-pos-v13.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/kasipos-app/',
+  '/kasipos-app/manifest.json',
+  '/kasipos-app/icon-192.png',
+  '/kasipos-app/icon-512.png'
 ];
 
 // ── INSTALL: Cache app shell on first install ─────────────────
