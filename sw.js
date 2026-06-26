@@ -3,7 +3,7 @@
 // UKA Systems | app.ukasystems.co.za
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE_NAME = 'kasipos-v4';
+const CACHE_NAME = 'kasipos-v5';
 
 // Use relative paths — works on any domain or subdirectory
 const APP_SHELL = [
