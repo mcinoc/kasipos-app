@@ -4709,10 +4709,11 @@ function subscribePlan(plan) {
 
   apiCall('POST', '/api/subscription/create', { plan: plan })
     .then(function(res) {
-      if (res.redirect_url) {
-        // Open PayFast payment page
-        window.open(res.redirect_url, '_blank');
-        showToast('💳 Complete payment in the browser that just opened', 'success');
+      var url = res.payment_url || res.redirect_url;
+      if (url) {
+        window.location.href = url;
+      } else {
+        showToast('❌ Could not get payment link. Please try again.', 'error');
       }
     })
     .catch(function(e) {
