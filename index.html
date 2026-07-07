@@ -3996,10 +3996,7 @@ function triggerBackup(type) {
   }, 2000);
 }
 
-function subscribePlan(plan) {
-  showToast(`⭐ Activating ${plan} plan...`, 'success');
-  setTimeout(() => { closeModal('modal-subscribe'); showToast('✅ Subscription activated!', 'success'); document.getElementById('settings-sub-status').textContent = plan === 'monthly' ? 'Monthly – R129/month' : 'Annual – R1,290/year'; }, 1000);
-}
+// subscribePlan defined below near boot
 
 // ===================== LANGUAGE =====================
 
@@ -4707,10 +4704,15 @@ function subscribePlan(plan) {
   if (!isLoggedIn()) { showScreen('screen-splash'); return; }
   if (!APP.isOnline) { showToast('⚠️ Internet required to subscribe', 'warning'); return; }
 
+  showToast('💳 Opening payment page...', 'success');
+
   apiCall('POST', '/api/subscription/create', { plan: plan })
     .then(function(res) {
+      // Backend returns payment_url (not redirect_url)
       var url = res.payment_url || res.redirect_url;
       if (url) {
+        // Use window.location.href — works reliably on Android Chrome
+        // without being blocked as a popup
         window.location.href = url;
       } else {
         showToast('❌ Could not get payment link. Please try again.', 'error');
